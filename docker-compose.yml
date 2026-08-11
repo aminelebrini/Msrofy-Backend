@@ -1,14 +1,32 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:15-alpine
+    container_name: msrofy_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   api:
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile
     container_name: msrofy_fastapi
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app
+      - ./app:/app
     environment:
-      - ENVIRONMENT=development
+      - DATABASE_URL=${DATABASE_URL}
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
