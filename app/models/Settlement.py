@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, Float, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from database import Base
+from app.database import Base
 
 class Settlement(Base):
     __tablename__ = "settlements"
