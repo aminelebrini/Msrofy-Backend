@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models import User
+from app.core.security import verify_password, get_password_hash
 
 class AuthRepository:
     def __init__(self, db: Session):
@@ -9,7 +10,7 @@ class AuthRepository:
 
         user = self.db.query(User).filter(User.email == request.email).first()
 
-        if(user and user.password == request.password):
+        if(user and verify_password(request.password, user.password)):
             return user
         else:
             return None
@@ -17,7 +18,7 @@ class AuthRepository:
     def create_user(self, request):
         user = User(
             email=request.email,
-            password=request.password
+            password=get_password_hash(request.password)
         )
         self.db.add(user)
         self.db.commit()
