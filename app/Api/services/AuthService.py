@@ -1,8 +1,9 @@
-from Api.repositories.AuthRepository import AuthRepository
+from app.Api.repositories.AuthRepository import AuthRepository
 
 class AuthService:
-    def __init__(self):
-        self.auth_repository = AuthRepository()
+    def __init__(self, db):
+        self.db = db
+        self.auth_repository = AuthRepository(db)
 
     def login(self, request):
 

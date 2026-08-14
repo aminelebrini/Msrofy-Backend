@@ -12,6 +12,6 @@ class Security:
         return Security.pwd_context.verify(plain_password, hashed_password)
 
 
-# hash_password = Security.hash_password
-# get_password_hash = Security.hash_password
-# verify_password = Security.verify_password
+hash_password = Security.hash_password
+get_password_hash = Security.hash_password
+verify_password = Security.verify_password

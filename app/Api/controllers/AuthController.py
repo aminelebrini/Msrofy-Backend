@@ -1,8 +1,9 @@
-from Api.services.AuthService import AuthService
+from app.Api.services.AuthService import AuthService
 
 class AuthController:
-    def __init__(self):
-        self.auth_service = AuthService()
+    def __init__(self, db):
+        self.db = db
+        self.auth_service = AuthService(db)
 
     def login(self, request):
         return self.auth_service.login(request)
