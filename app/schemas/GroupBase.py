@@ -13,7 +13,7 @@ class GroupBase(BaseModel):
         orm_mode = True
 
 class GroupCreate(GroupBase):
-    pass
+    owner_id: int = Field(..., description="The ID of the user who owns the group")
 
 class GroupResponse(GroupBase):
     id: int
