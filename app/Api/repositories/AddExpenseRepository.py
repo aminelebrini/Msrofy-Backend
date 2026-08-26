@@ -13,3 +13,8 @@ class AddExpenseRepository:
             title = title,
             total_amount = totalAmount
         )
+        self.db.add(new_expense)
+        self.db.commit()
+        self.db.refresh(new_expense)
+
+        
