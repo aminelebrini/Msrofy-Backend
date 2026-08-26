@@ -5,5 +5,5 @@ class AddMemberToGroupeController:
         self.db = db
         self.add_member_service = AddMemberToGroupeService(db)
 
-    def add_member(self, group_id, user_id, role):
-        return self.add_member_service.add_member(group_id, user_id, role)
+    def add_member(self, group_id, user_id):
+        return self.add_member_service.add_member(group_id, user_id)

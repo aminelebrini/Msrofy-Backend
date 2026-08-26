@@ -5,5 +5,5 @@ class AddMemberToGroupeService:
         self.db = db
         self.add_member_repository = AddMemberToGroupeRepository(db)
 
-    def add_member(self, group_id, user_id, role):
-        return self.add_member_repository.add_member(group_id, user_id, role)
+    def add_member(self, group_id, user_id):
+        return self.add_member_repository.add_member(group_id, user_id)
